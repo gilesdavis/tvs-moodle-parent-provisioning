@@ -216,11 +216,11 @@ class TVS_PMP_Table extends TVS_WP_List_Table {
 			if ( property_exists( $item, 'request_type' ) && strlen( $item->request_type ) > 0 ) {
 				switch ( $item->request_type ) {
 					//TODO l10n -- also should we be tracking form entries?
-					case 'I do not currently have a Moodle Account.':
+					case 'I do not currently have a VLE Account.':
 						$request_type_class = 'new-account';
 						$request_type_dashicon = 'dashicons-plus-alt';
 					break;
-					case 'I have a Moodle account, but cannot log in.':
+					case 'I have a VLE account, but cannot log in.':
 						$request_type_class = 'login-issue';
 						$request_type_dashicon = 'dashicons-admin-network';
 					break;

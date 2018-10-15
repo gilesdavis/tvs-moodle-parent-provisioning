@@ -575,7 +575,7 @@ class TVS_PMP_Provisioner {
 
 		$this->logger->info( sprintf( __( 'Running Moodle scheduled task %s', 'tvs-moodle-parent-provisioning' ), $task ) );
 		
-		$command = 'sudo -u ' .
+		$command = '/usr/local/bin/sudo -u ' .
 			escapeshellarg( $this->sudo_account ) .
 			' ' .
 			escapeshellarg( $this->php_path ) .
@@ -804,7 +804,7 @@ class TVS_PMP_Provisioner {
 
 		// find the mdl_user associated with this request. This will have been created at approval time
 
-		$mdl_userid = $this->get_moodle_userid( $this->auth, $request->parent_title  . ' ' . $request->parent_fname, $request->parent_sname, $request->parent_email, $request->parent_email );
+		$mdl_userid = $this->get_moodle_userid( $this->auth, $request->parent_fname, $request->parent_sname, $request->parent_email, $request->parent_email );
 
 		if ( ! $mdl_userid ) {
 			$this->logger->error( sprintf( __( 'Did not find the mdl_user entry for the request %d (%s %s: %s). Cannot continue provisioning this parent account.', 'tvs-moodle-parent-provisioning' ), $request->id, $request->parent_fname, $request->parent_sname, $request->parent_email ) );

@@ -133,7 +133,7 @@ class TVS_PMP_Ajax_Actions {
                 // add to external Moodle auth table and wait there until the next cron-initiated provision cycle
                 $username = strtolower( $row->parent_email );
                 $parent_title = $row->parent_title;
-                $parent_fname = $row->parent_title . ' ' . $row->parent_fname;
+                $parent_fname = $row->parent_fname;
                 $parent_sname = $row->parent_sname;
                 $parent_email = strtolower( $row->parent_email );
                 $description = 'Parent Moodle Account';
@@ -392,9 +392,10 @@ class TVS_PMP_Ajax_Actions {
 
 		$pm->isSMTP();
 		$pm->Host = get_option( 'tvs-moodle-parent-provisioning-smtp-server' );
-		$pm->Port = 587;
-		$pm->SMTPSecure = 'tls';
-		$pm->SMTPAuth = true;
+		//$pm->Port = 587;
+		$pm->Port = 25;
+		//$pm->SMTPSecure = 'tls';
+		$pm->SMTPAuth = false;
 
 		$pm->Username = get_option( 'tvs-moodle-parent-provisioning-smtp-username' );
 		$pm->Password = get_option( 'tvs-moodle-parent-provisioning-smtp-password' );
